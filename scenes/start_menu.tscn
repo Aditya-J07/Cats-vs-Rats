@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://cgxvl8eeqis0u"]
+
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_hby0f"]
+[ext_resource type="Texture2D" uid="uid://dbgyacrdqh4l6" path="res://sprite/icon.png" id="1_xqodn"]
+[ext_resource type="FontFile" uid="uid://c14bhv17t7fjp" path="res://fonts/PixelOperator8-Bold.ttf" id="2_r0vrn"]
+[ext_resource type="FontFile" uid="uid://bfd6r2t2qkk8p" path="res://fonts/PixelOperator8.ttf" id="3_rywhh"]
+[ext_resource type="Texture2D" uid="uid://0iuicjhke0k0" path="res://sprite/button.png" id="5_1ihsk"]
+[ext_resource type="Texture2D" uid="uid://p060cwwj17ig" path="res://sprite/button_hovered.png" id="6_8gc8s"]
+[ext_resource type="AudioStream" uid="uid://ca2m8m81eihtk" path="res://sounds/rat.mp3" id="7_6dhwl"]
+
+[sub_resource type="Environment" id="Environment_l72rb"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 7.57
+glow_strength = 1.69
+glow_blend_mode = 0
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_hby0f")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(248, 192)
+scale = Vector2(0.45, 0.42)
+texture = ExtResource("1_xqodn")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 280.0
+offset_top = 208.0
+offset_right = 634.0
+offset_bottom = 232.0
+theme_override_colors/font_color = Color(1, 0.921569, 0.0705882, 1)
+theme_override_colors/font_shadow_color = Color(0.85098, 0.623529, 0.0823529, 1)
+theme_override_colors/font_outline_color = Color(0.921569, 0.419608, 0, 1)
+theme_override_fonts/font = ExtResource("2_r0vrn")
+theme_override_font_sizes/font_size = 24
+text = "CLICK     TO START"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 408.0
+offset_top = 296.0
+offset_right = 628.0
+offset_bottom = 331.0
+theme_override_colors/font_color = Color(1, 0.921569, 0.0705882, 1)
+theme_override_colors/font_shadow_color = Color(0.85098, 0.623529, 0.0823529, 1)
+theme_override_colors/font_outline_color = Color(0.921569, 0.419608, 0, 1)
+theme_override_fonts/font = ExtResource("3_rywhh")
+text = "Made By
+prolly_adi"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 408.0
+offset_top = 200.0
+offset_right = 448.0
+offset_bottom = 240.0
+texture_normal = ExtResource("5_1ihsk")
+texture_pressed = ExtResource("5_1ihsk")
+texture_hover = ExtResource("6_8gc8s")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_l72rb")
+
+[node name="ratsound" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_6dhwl")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

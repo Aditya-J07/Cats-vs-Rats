@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://be35iaxvippee"]
+
+[ext_resource type="Texture2D" uid="uid://1wrd80rwmcle" path="res://sprite/CatSprite.png" id="1_p045k"]
+[ext_resource type="Script" path="res://scripts/cat.gd" id="1_xingw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ji4t1"]
+radius = 22.0
+
+[node name="cat" type="CharacterBody2D"]
+script = ExtResource("1_xingw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p045k")
+region_enabled = true
+region_rect = Rect2(3.22222, 172, 59.1111, 65.3333)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ji4t1")

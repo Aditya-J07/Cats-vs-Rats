@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dskfsxryly31w"]
+
+[ext_resource type="AudioStream" uid="uid://d36pghsiqfr3r" path="res://sounds/bgm.mp3" id="1_ecrp7"]
+
+[node name="bgm" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_ecrp7")
+autoplay = true

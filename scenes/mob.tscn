@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4f6tnssyx6g7"]
+
+[ext_resource type="Texture2D" uid="uid://1wrd80rwmcle" path="res://sprite/CatSprite.png" id="1_q4vqq"]
+[ext_resource type="Script" path="res://scripts/mob.gd" id="1_v5npu"]
+[ext_resource type="AudioStream" uid="uid://dbtunfovrs53v" path="res://sounds/Cat_hurt3.ogg.mp3" id="3_7xl0e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xoyti"]
+radius = 24.3311
+
+[node name="mob" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+platform_floor_layers = 4294967040
+script = ExtResource("1_v5npu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visibility_layer = 3
+position = Vector2(0, -4)
+rotation = -1.57145
+scale = Vector2(1.24242, 1.24242)
+texture = ExtResource("1_q4vqq")
+region_enabled = true
+region_rect = Rect2(0, 166.471, 66.9395, 77.289)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xoyti")
+
+[node name="cathurt" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_7xl0e")
+volume_db = -13.0

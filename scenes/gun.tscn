@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://61xqh5x8q040"]
+
+[ext_resource type="Script" path="res://scripts/gun.gd" id="1_ii8uk"]
+[ext_resource type="Texture2D" uid="uid://bl7s0pqwld8my" path="res://sprite/Gun.png" id="1_qv1d6"]
+[ext_resource type="AudioStream" uid="uid://djhncbfjwtje6" path="res://sounds/gunsound.mp3" id="3_7rbsl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bx13e"]
+radius = 129.016
+
+[node name="gun" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_ii8uk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bx13e")
+
+[node name="WaponPivot" type="Marker2D" parent="."]
+
+[node name="pistol" type="Sprite2D" parent="WaponPivot"]
+position = Vector2(43, 0)
+scale = Vector2(0.354839, 0.354839)
+texture = ExtResource("1_qv1d6")
+region_enabled = true
+region_rect = Rect2(0, 109.137, 176.224, 124.009)
+
+[node name="ShootingPoint" type="Marker2D" parent="WaponPivot/pistol"]
+unique_name_in_owner = true
+position = Vector2(58.3529, 0)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="boom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7rbsl")
+volume_db = -23.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1ugbpu58ejun"]
+
+[ext_resource type="Texture2D" uid="uid://dbgyacrdqh4l6" path="res://sprite/icon.png" id="1_ct2kd"]
+[ext_resource type="Script" path="res://scripts/start_menu.gd" id="1_w83fi"]
+[ext_resource type="FontFile" uid="uid://c14bhv17t7fjp" path="res://fonts/PixelOperator8-Bold.ttf" id="2_q68s5"]
+[ext_resource type="Texture2D" uid="uid://0iuicjhke0k0" path="res://sprite/button.png" id="3_adrpu"]
+[ext_resource type="FontFile" uid="uid://bfd6r2t2qkk8p" path="res://fonts/PixelOperator8.ttf" id="3_akm46"]
+[ext_resource type="Texture2D" uid="uid://p060cwwj17ig" path="res://sprite/button_hovered.png" id="4_2ksdf"]
+
+[sub_resource type="GDScript" id="GDScript_ly6t4"]
+script/source = "pass
+"
+
+[node name="start_menu" type="Node2D"]
+script = ExtResource("1_w83fi")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(222, 181)
+scale = Vector2(0.4325, 0.445)
+texture = ExtResource("1_ct2kd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 292.0
+offset_top = 202.0
+offset_right = 636.0
+offset_bottom = 226.0
+theme_override_colors/font_color = Color(1, 0.917647, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.701961, 0, 1)
+theme_override_colors/font_outline_color = Color(0.92549, 0.396078, 0, 1)
+theme_override_fonts/font = ExtResource("2_q68s5")
+theme_override_font_sizes/font_size = 16
+text = "Click the        to start"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 293.0
+offset_top = 267.0
+offset_right = 637.0
+offset_bottom = 302.0
+theme_override_colors/font_color = Color(1, 0.917647, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0.701961, 0, 1)
+theme_override_colors/font_outline_color = Color(0.92549, 0.396078, 0, 1)
+theme_override_fonts/font = ExtResource("3_akm46")
+theme_override_font_sizes/font_size = 16
+text = "Made by
+prolly_adi"
+horizontal_alignment = 2
+
+[node name="StartButton" type="TextureButton" parent="."]
+offset_left = 468.0
+offset_top = 189.0
+offset_right = 508.0
+offset_bottom = 229.0
+texture_normal = ExtResource("3_adrpu")
+texture_pressed = ExtResource("3_adrpu")
+texture_hover = ExtResource("4_2ksdf")
+script = SubResource("GDScript_ly6t4")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

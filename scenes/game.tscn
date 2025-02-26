@@ -1,0 +1,151 @@
+[gd_scene load_steps=13 format=3 uid="uid://b3mqen6ohhgmj"]
+
+[ext_resource type="PackedScene" uid="uid://p8hyhyg2t7de" path="res://scenes/rat.tscn" id="1_5vi0l"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_i87vw"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="3_5dvlw"]
+[ext_resource type="Texture2D" uid="uid://0iuicjhke0k0" path="res://sprite/button.png" id="4_0gctq"]
+[ext_resource type="FontFile" uid="uid://c14bhv17t7fjp" path="res://fonts/PixelOperator8-Bold.ttf" id="4_pn10e"]
+[ext_resource type="Texture2D" uid="uid://p060cwwj17ig" path="res://sprite/button_hovered.png" id="5_ihcm5"]
+[ext_resource type="FontFile" uid="uid://bfd6r2t2qkk8p" path="res://fonts/PixelOperator8.ttf" id="6_6e6qg"]
+[ext_resource type="AudioStream" uid="uid://ca2m8m81eihtk" path="res://sounds/rat.mp3" id="7_s0i6a"]
+[ext_resource type="PackedScene" uid="uid://dskfsxryly31w" path="res://scenes/bgm.tscn" id="9_y5n23"]
+
+[sub_resource type="Curve2D" id="Curve2D_niqfk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -57, -74, 0, 0, 0, 0, 717, -78, 0, 0, 0, 0, 720, 395, 0, 0, 0, 0, -53, 392, 0, 0, 0, 0, -58, -75)
+}
+point_count = 5
+
+[sub_resource type="GDScript" id="GDScript_h6uaw"]
+
+[sub_resource type="Environment" id="Environment_8f61r"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 7.57
+glow_strength = 1.69
+glow_blend_mode = 0
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_i87vw")
+
+[node name="rat" parent="." instance=ExtResource("1_5vi0l")]
+position = Vector2(320, 180)
+
+[node name="Path2D" type="Path2D" parent="rat"]
+position = Vector2(-320, -180)
+curve = SubResource("Curve2D_niqfk")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="rat/Path2D"]
+unique_name_in_owner = true
+position = Vector2(-57, -74)
+rotation = -0.00516791
+
+[node name="Control" type="Control" parent="rat"]
+z_index = 20
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_h6uaw")
+
+[node name="gamescore" type="Label" parent="rat/Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = -172.0
+offset_right = 12.0
+offset_bottom = -148.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_pn10e")
+theme_override_font_sizes/font_size = 24
+text = "100"
+script = ExtResource("3_5dvlw")
+
+[node name="bgm" parent="rat" instance=ExtResource("9_y5n23")]
+volume_db = -10.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+autostart = true
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.639216)
+
+[node name="TextureButton" type="TextureButton" parent="GameOver/ColorRect"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 36.0
+offset_right = 20.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_0gctq")
+texture_pressed = ExtResource("4_0gctq")
+texture_hover = ExtResource("5_ihcm5")
+
+[node name="Label" type="Label" parent="GameOver/ColorRect"]
+modulate = Color(0.917647, 0.807843, 0, 1)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -26.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.919176, 0.807233, 7.70092e-07, 1)
+theme_override_colors/font_shadow_color = Color(0.822912, 0.452914, 3.85046e-07, 1)
+theme_override_colors/font_outline_color = Color(0.707684, 0.315297, 0.00924794, 1)
+theme_override_fonts/font = ExtResource("4_pn10e")
+theme_override_font_sizes/font_size = 24
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 10.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.919176, 0.807233, 7.70092e-07, 1)
+theme_override_colors/font_shadow_color = Color(0.822912, 0.452914, 3.85046e-07, 1)
+theme_override_colors/font_outline_color = Color(0.707684, 0.315297, 0.00924794, 1)
+theme_override_fonts/font = ExtResource("6_6e6qg")
+theme_override_font_sizes/font_size = 16
+text = "PLAY AGAIN "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="rathurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_s0i6a")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8f61r")
+
+[connection signal="health_depleted" from="rat" to="." method="_on_rat_health_depleted"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameOver/ColorRect/TextureButton" to="." method="_on_texture_button_pressed"]
