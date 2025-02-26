@@ -25,7 +25,7 @@
 1. **Download both Part 1 and Part 2 of the game** from the provided download links.
 2. **Extract the files**:
    - Use **WinRAR** or another archive tool to extract the contents of **both Part 1** and **Part 2** of the **Rat vs Cat .rar** files.
-   - Select both parts and right-click to extract them into a single folder.
+   - Select both parts and right-click to extract them into a single folder using **winrar**.
 3. After extracting, you will get a **.exe** file.
 4. **Execute the .exe file** to start the game.
 
@@ -51,4 +51,5 @@ You can also play **Rat vs Cat** directly on **Itch.io**! For a web version of t
 ## Additional Notes:
 
 - The itch.io version does not include the glow effect. For the full experience, download the **Windows version**.
-- - **Play in windowed mode** for the best experience.
+      - From here [Game Files](./Game%20files/)
+- **Play in windowed mode** for the best experience.
